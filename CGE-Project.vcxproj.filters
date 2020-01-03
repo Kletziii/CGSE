@@ -77,6 +77,9 @@
     <ClInclude Include="Headers\Wall.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LOD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -113,6 +116,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LOD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

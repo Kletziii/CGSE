@@ -20,6 +20,7 @@
 #include "../Headers/Vector3d.h"
 #include "../Headers/TextureLoader.h"
 #include "../Headers/CollisionBox.h"
+#include "../Headers/LOD.h"
 
 #include "../Assimp/assimp-3.1.1/include/assimp/ai_assert.h"
 
@@ -587,7 +588,7 @@ void init(int width, int height) {
 	obstacles[35] = Obstacle(Vector3d(0, 0.0001, -24), Vector3d(2, 0.0001, 6), false, true, 1, textureLoader.get("lava"));
 
 	// create walls
-	walls.push_back(Wall(-2, 2, -2, -10, 3, true, 1, textureLoader.get("bricks")));
+	//walls.push_back(Wall(-2, 2, -2, -10, 3, true, 1, textureLoader.get("bricks")));
 	walls.push_back(Wall(2, 2, 2, -10, 3, false, 1, textureLoader.get("bricks")));
 	walls.push_back(Wall(-2, 2, 2, 2, 3, false, 1, textureLoader.get("bricks")));
 
@@ -626,6 +627,7 @@ void init(int width, int height) {
 	walls.push_back(Wall(22, -33, 28, -33, 3, false, 1, textureLoader.get("bricks")));
 	walls.push_back(Wall(28, -33, 28, -36, 3, false, 1, textureLoader.get("bricks")));
 
+	obstacles[36] = Obstacle(Vector3d(0, 1, -6), Vector3d(1, 1, 1), false, true, 1, textureLoader.get("metalcrate"));
 
 }
 
