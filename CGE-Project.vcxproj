@@ -142,21 +142,21 @@
     <ClInclude Include="Headers\Hud.h" />
     <ClInclude Include="Headers\Light.h" />
     <ClInclude Include="Headers\FireBall.h" />
+    <ClInclude Include="Headers\LOD.h" />
     <ClInclude Include="Headers\Obstacle.h" />
     <ClInclude Include="Headers\TextureLoader.h" />
     <ClInclude Include="Headers\TgaLoader.h" />
     <ClInclude Include="Headers\Vector3d.h" />
     <ClInclude Include="Headers\Wall.h" />
-    <ClInclude Include="LOD.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LOD.cpp" />
     <ClCompile Include="Sources\CollisionBox.cpp" />
     <ClCompile Include="Sources\Camera.cpp" />
     <ClCompile Include="Sources\Coin.cpp" />
     <ClCompile Include="Sources\FireBall.cpp" />
     <ClCompile Include="Sources\Hud.cpp" />
     <ClCompile Include="Sources\Light.cpp" />
+    <ClCompile Include="Sources\LOD.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Obstacle.cpp" />
     <ClCompile Include="Sources\TextureLoader.cpp" />
