@@ -26,6 +26,60 @@ Obstacle::~Obstacle() {
 
 }
 
+void Obstacle::drawObstacle2() {
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTranslatef(position.getX(), position.getY(), position.getZ());
+
+	glBegin(GL_QUADS);
+	// front face
+	glNormal3f(0.0, 0.0, 1.0);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(-halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
+
+	// back face
+	glNormal3f(0.0, 0.0, -1.0);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(-halfLengths.getX(), -halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(-halfLengths.getX(), halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(halfLengths.getX(), halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(halfLengths.getX(), -halfLengths.getY(), -halfLengths.getZ());
+
+	// top face (tex coords adapted for lava lake)
+	glNormal3f(0.0, 1.0, 0.0);
+	glTexCoord2f(0.0f, textureFactor * halfLengths.getZ());
+	glVertex3f(-halfLengths.getX(), halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(-halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(textureFactor * halfLengths.getX(), 0.0f);
+	glVertex3f(halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(textureFactor * halfLengths.getX(), textureFactor * halfLengths.getZ());
+	glVertex3f(halfLengths.getX(), halfLengths.getY(), -halfLengths.getZ());
+
+	// bottom face
+	glNormal3f(0.0, -1.0, 1.0);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(-halfLengths.getX(), -halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(halfLengths.getX(), -halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(-halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
+	// right face
+	glNormal3f(1.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(halfLengths.getX(), -halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(halfLengths.getX(), halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
+	// left face
+	glNormal3f(-1.0, 0.0, 0.0);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-halfLengths.getX(), -halfLengths.getY(), -halfLengths.getZ());
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(-halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(-halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(-halfLengths.getX(), halfLengths.getY(), -halfLengths.getZ());
+	glEnd();
+
+	glPopMatrix();
+}
+
 void Obstacle::drawObstacle() {
 	glPushMatrix();
 
@@ -100,6 +154,14 @@ bool Obstacle::isHit() const {
 
 bool Obstacle::isDestructible() const {
 	return this->destructible;
+}
+
+void Obstacle::setDestructible() {
+	this->destructible = true;
+}
+
+void Obstacle::setLength() {
+	this->halfLengths = Vector3d(0.5f, 0.5f, 0.5f);
 }
 
 bool Obstacle::isHarmful() const {

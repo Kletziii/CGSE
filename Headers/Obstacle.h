@@ -9,9 +9,12 @@ public:
 	Obstacle(Vector3d position, Vector3d halfLengths, bool destructible, bool harmful, float textureFactor, GLuint texture);
 	~Obstacle();
 	void drawObstacle();
+	void drawObstacle2();
 	void setCollision();
 	bool isHit() const;
 	bool isDestructible() const;
+	void setDestructible();
+	void setLength();
 	bool isHarmful() const;
 	CollisionBox getCollisionBox() const;
 	void setPosition(Vector3d newPosition);

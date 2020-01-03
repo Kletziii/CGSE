@@ -365,20 +365,51 @@ void handleCoins() {
 
 void handleObstacles() {
 	// remove obstacles (needs iterator)
+	// TODO LODs here
+	Vector3d camPos = camera.getPosition();
+
 	for (auto it = obstacles.cbegin(); it != obstacles.cend();) {
 		if (it->second.isDestructible() && it->second.isHit()) {
 			it = obstacles.erase(it);
 		}
 		else {
 			++it;
-		}
+		}	
 	}
 
 	// draw obstacles
 	for (auto& pair : obstacles) {
-		pair.second.drawObstacle();
+
+
+
+		Vector3d dif = camPos - pair.second.getPosition();
+		double length = dif.length();
+		if (length < 5) {
+			pair.second.setLength();
+			pair.second.drawObstacle();
+		}
+		else {
+			pair.second.drawObstacle();
+		}
 	}
 }
+
+//void handleLODs() {
+//	// remove obstacles (needs iterator)
+//	for (auto it = LODs.cbegin(); it != LODs.cend();) {
+//		if (it->second.isDestructible() && it->second.isHit()) {
+//			it = LODs.erase(it);
+//		}
+//		else {
+//			++it;
+//		}
+//	}
+//
+//	// draw obstacles
+//	for (auto& pair : LODs) {
+//		pair.second.drawObstacle();
+//	}
+//}
 
 void handleWalls() {
 	for (int i = 0; i < walls.size(); i++) {
