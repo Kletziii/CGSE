@@ -15,6 +15,7 @@ public:
 	bool isDestructible() const;
 	void setDestructible();
 	void setLength();
+	void setCollisionBox();
 	bool isHarmful() const;
 	CollisionBox getCollisionBox() const;
 	void setPosition(Vector3d newPosition);

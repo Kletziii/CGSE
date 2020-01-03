@@ -385,8 +385,7 @@ void handleObstacles() {
 		Vector3d dif = camPos - pair.second.getPosition();
 		double length = dif.length();
 		if (length < 5) {
-			pair.second.setLength();
-			pair.second.drawObstacle();
+			pair.second.drawObstacle2();
 		}
 		else {
 			pair.second.drawObstacle();

@@ -28,6 +28,9 @@ Obstacle::~Obstacle() {
 
 void Obstacle::drawObstacle2() {
 	glPushMatrix();
+	Vector3d oldValue = this->halfLengths;
+	setLength();
+	setCollisionBox();
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTranslatef(position.getX(), position.getY(), position.getZ());
 
@@ -76,7 +79,8 @@ void Obstacle::drawObstacle2() {
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(-halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(-halfLengths.getX(), halfLengths.getY(), -halfLengths.getZ());
 	glEnd();
-
+	this->halfLengths = oldValue;
+	this->collisionBox = CollisionBox(this->position, oldValue);
 	glPopMatrix();
 }
 
@@ -162,6 +166,10 @@ void Obstacle::setDestructible() {
 
 void Obstacle::setLength() {
 	this->halfLengths = Vector3d(0.5f, 0.5f, 0.5f);
+}
+
+void Obstacle::setCollisionBox() {
+	this->collisionBox = CollisionBox(this->position, Vector3d(0.5f, 0.5f, 0.5f));
 }
 
 bool Obstacle::isHarmful() const {
