@@ -34,7 +34,7 @@ void LOD::drawLOD() {
 
 	glBegin(GL_QUADS);
 	// front face
-	glColor4f(.23, .78, .32, 0.1);
+	glNormal3f(0.0, 0.0, 1.0);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(halfLengths.getX(), -halfLengths.getY(), halfLengths.getZ());
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());

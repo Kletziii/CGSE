@@ -522,6 +522,33 @@ void display() {
 	handleWalls();
 	handleRunning();
 
+	// TODO
+	GLfloat mat_white[] = { 1.0, 1.0, 1.0, 0.5 };
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_white);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_white);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_white);
+	glMaterialf(GL_FRONT, GL_SHININESS, 60.0);
+
+	glBegin(GL_QUADS);
+	//glNormal3f(0.0, 0.0, 1.0);
+	glColor4f(.23, .78, .32, 0.1);
+	// immer gleich, höhe, breite
+	glVertex3f(1.0, 1.0, 1.0);
+	glColor4f(.23, .78, .32, 0.1);
+	glVertex3f(1.0, 1, 0.0);
+	glColor4f(.23, .78, .32, 0.1);
+	glVertex3f(1.0, 0.0, 0.0);
+	glColor4f(1.0, .78, .32, 0.1);
+	glVertex3f(1.0, 0.0, 1.0);
+	glEnd();
+	glFlush();
+
+	GLfloat mat_white2[] = { 1.0, 1.0, 1.0, 1.0 };
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_white2);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_white2);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_white2);
+	glMaterialf(GL_FRONT, GL_SHININESS, 60.0);
+
 	// world
 	drawWorld();
 
@@ -658,20 +685,6 @@ void init(int width, int height) {
 	walls.push_back(Wall(28, -33, 28, -36, 3, false, 1, textureLoader.get("bricks")));
 
 	obstacles[36] = Obstacle(Vector3d(0, 1, -6), Vector3d(1, 1, 1), false, true, 1, textureLoader.get("metalcrate"));
-
-
-	glBegin(GL_QUADS);
-	glNormal3f(0.0, 0.0, 1.0);
-	glColor4f(.23, .78, .32, 1.0);
-	glVertex3f(1.0, 1.0, 1);
-	glColor4f(.23, .78, .32, 0.1);
-	glVertex3f(1.0, 0.0, 1);
-	glColor4f(.23, .78, .32, 1.0);
-	glVertex3f(0.55, 0.45, 0.0);
-	glColor4f(.23, .78, .32, 0.1);
-	glVertex3f(1.0, 0.0, 0.0);
-	glEnd();
-
 }
 
 void timer(int value) {
@@ -723,6 +736,7 @@ int main(int argc, char **argv) {
 	window = glutCreateWindow("Dungeon Lurker");
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
+	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glutDisplayFunc(&display);
 	glutReshapeFunc(&resize);
 	glutKeyboardFunc(&keyPressed);
