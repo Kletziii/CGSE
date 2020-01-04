@@ -659,6 +659,19 @@ void init(int width, int height) {
 
 	obstacles[36] = Obstacle(Vector3d(0, 1, -6), Vector3d(1, 1, 1), false, true, 1, textureLoader.get("metalcrate"));
 
+
+	glBegin(GL_QUADS);
+	glNormal3f(0.0, 0.0, 1.0);
+	glColor4f(.23, .78, .32, 1.0);
+	glVertex3f(1.0, 1.0, 1);
+	glColor4f(.23, .78, .32, 0.1);
+	glVertex3f(1.0, 0.0, 1);
+	glColor4f(.23, .78, .32, 1.0);
+	glVertex3f(0.55, 0.45, 0.0);
+	glColor4f(.23, .78, .32, 0.1);
+	glVertex3f(1.0, 0.0, 0.0);
+	glEnd();
+
 }
 
 void timer(int value) {
@@ -708,6 +721,8 @@ int main(int argc, char **argv) {
 	glutInitWindowSize(640, 480);
 	glutInitWindowPosition(0, 0);
 	window = glutCreateWindow("Dungeon Lurker");
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 	glutDisplayFunc(&display);
 	glutReshapeFunc(&resize);
 	glutKeyboardFunc(&keyPressed);
