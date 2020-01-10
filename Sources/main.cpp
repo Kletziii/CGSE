@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <stdlib.h> // for exit (must be above GL)
+#include <cstdlib>
 
 #include <GL/glut.h> 
 #include <GL/gl.h>  
@@ -20,7 +21,7 @@
 #include "../Headers/Vector3d.h"
 #include "../Headers/TextureLoader.h"
 #include "../Headers/CollisionBox.h"
-#include "../Headers/LOD.h"
+#include "../Headers/Transparent.h"
 
 #include "../Assimp/assimp-3.1.1/include/assimp/ai_assert.h"
 
@@ -43,6 +44,7 @@ vector<Wall> walls;
 map<int, Obstacle> obstacles;
 vector<FireBall> fireBalls;
 vector<Coin> coins;
+vector<Transparent> transparent;
 Camera camera = Camera(0.05f);
 Hud hud = Hud();
 TextureLoader textureLoader = TextureLoader();
@@ -365,7 +367,7 @@ void handleCoins() {
 
 void handleObstacles() {
 	// remove obstacles (needs iterator)
-	// TODO LODs here
+	// TODO Transparents here
 	Vector3d camPos = camera.getPosition();
 
 	for (auto it = obstacles.cbegin(); it != obstacles.cend();) {
@@ -393,22 +395,20 @@ void handleObstacles() {
 	}
 }
 
-//void handleLODs() {
-//	// remove obstacles (needs iterator)
-//	for (auto it = LODs.cbegin(); it != LODs.cend();) {
-//		if (it->second.isDestructible() && it->second.isHit()) {
-//			it = LODs.erase(it);
-//		}
-//		else {
-//			++it;
-//		}
-//	}
-//
-//	// draw obstacles
-//	for (auto& pair : LODs) {
-//		pair.second.drawObstacle();
-//	}
-//}
+void handleTransparents() {
+	struct {
+		bool bigger(const Transparent& a, const Transparent& b) const {
+			return abs((a.getPosition() - camera.getPosition()).length()) > abs((b.getPosition() - camera.getPosition()).length());
+		}
+	} sortFunc;
+
+	std::sort(transparent.begin(), transparent.end(), sortFunc);
+
+	// draw triangles
+	for (int i = 0; i < transparent.size(); i++) {
+		transparent[0].drawTransparent;
+	}
+}
 
 void handleWalls() {
 	for (int i = 0; i < walls.size(); i++) {
@@ -552,6 +552,9 @@ void display() {
 	// world
 	drawWorld();
 
+	//draw transparency
+	handleTransparents();
+
 	// collision handling
 	doCollisionsFireBallObstacles();
 	doCollisionsCameraObstacles();
@@ -685,6 +688,8 @@ void init(int width, int height) {
 	walls.push_back(Wall(28, -33, 28, -36, 3, false, 1, textureLoader.get("bricks")));
 
 	obstacles[36] = Obstacle(Vector3d(0, 1, -6), Vector3d(1, 1, 1), false, true, 1, textureLoader.get("metalcrate"));
+
+	transparent.push_back()
 }
 
 void timer(int value) {
