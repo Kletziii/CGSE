@@ -16,6 +16,7 @@ public:
 	CollisionBox getCollisionBox() const;
 	void setPosition(Vector3d newPosition);
 	Vector3d getPosition() const;
+	Vector3d getCenter() const;
 	void calcCentroid();
 
 private:

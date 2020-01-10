@@ -395,18 +395,22 @@ void handleObstacles() {
 	}
 }
 
-void handleTransparents() {
-	struct {
-		bool bigger(const Transparent& a, const Transparent& b) const {
-			return abs((a.getPosition() - camera.getPosition()).length()) > abs((b.getPosition() - camera.getPosition()).length());
-		}
-	} sortFunc;
+bool bigger(Transparent a, Transparent b) {
+	return abs((a.getCenter() - camera.getPosition()).length()) > abs((b.getCenter() - camera.getPosition()).length());
+}
 
-	std::sort(transparent.begin(), transparent.end(), sortFunc);
+void handleTransparents() {
+	/*struct {
+		bool bigger(Transparent a, Transparent b) {
+			return abs((a.getCenter() - camera.getPosition()).length()) > abs((b.getCenter() - camera.getPosition()).length());
+		}
+	} sortFunc;*/
+
+	//std::sort(transparent.begin(), transparent.end(), bigger);
 
 	// draw triangles
 	for (int i = 0; i < transparent.size(); i++) {
-		transparent[0].drawTransparent;
+		transparent[0].drawTransparent();
 	}
 }
 
@@ -529,6 +533,7 @@ void display() {
 	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_white);
 	glMaterialf(GL_FRONT, GL_SHININESS, 60.0);
 
+	//Transparente Quads Plane
 	glBegin(GL_QUADS);
 	//glNormal3f(0.0, 0.0, 1.0);
 	glColor4f(.23, .78, .32, 0.1);
@@ -689,7 +694,17 @@ void init(int width, int height) {
 
 	obstacles[36] = Obstacle(Vector3d(0, 1, -6), Vector3d(1, 1, 1), false, true, 1, textureLoader.get("metalcrate"));
 
-	transparent.push_back()
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 0, 1), Vector3d(-1, 1, 1), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(0, 1, 1), Vector3d(0, 1, 0), Vector3d(0, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(0, 0, 1), Vector3d(0, 1, 1), Vector3d(0, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	/*
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));*/
 }
 
 void timer(int value) {
@@ -739,14 +754,14 @@ int main(int argc, char **argv) {
 	glutInitWindowSize(640, 480);
 	glutInitWindowPosition(0, 0);
 	window = glutCreateWindow("Dungeon Lurker");
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_BLEND);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glutDisplayFunc(&display);
 	glutReshapeFunc(&resize);
 	glutKeyboardFunc(&keyPressed);
 	glutKeyboardUpFunc(&keyUp);
 	init(640, 480);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 	glutTimerFunc(15, timer, 1);
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);

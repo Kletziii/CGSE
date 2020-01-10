@@ -142,7 +142,7 @@
     <ClInclude Include="Headers\Hud.h" />
     <ClInclude Include="Headers\Light.h" />
     <ClInclude Include="Headers\FireBall.h" />
-    <ClInclude Include="Headers\LOD.h" />
+    <ClInclude Include="Headers\Transparent.h" />
     <ClInclude Include="Headers\Obstacle.h" />
     <ClInclude Include="Headers\TextureLoader.h" />
     <ClInclude Include="Headers\TgaLoader.h" />
@@ -156,7 +156,7 @@
     <ClCompile Include="Sources\FireBall.cpp" />
     <ClCompile Include="Sources\Hud.cpp" />
     <ClCompile Include="Sources\Light.cpp" />
-    <ClCompile Include="Sources\LOD.cpp" />
+    <ClCompile Include="Sources\Transparent.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Obstacle.cpp" />
     <ClCompile Include="Sources\TextureLoader.cpp" />
