@@ -32,11 +32,11 @@ void Transparent::drawTransparent() {
 	//glBindTexture(GL_TEXTURE_2D, texture);
 	//glTranslatef(position.getX(), position.getY(), position.getZ());
 
-	//GLfloat mat_white[] = { 1.0, 1.0, 1.0, 0.5 };
-	//glMaterialfv(GL_FRONT, GL_SPECULAR, mat_white);
-	//glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_white);
-	//glMaterialfv(GL_FRONT, GL_AMBIENT, mat_white);
-	//glMaterialf(GL_FRONT, GL_SHININESS, 60.0);
+	GLfloat mat_white[] = { 1.0, 1.0, 1.0, 0.5 };
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_white);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_white);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_white);
+	glMaterialf(GL_FRONT, GL_SHININESS, 60.0);
 
 	glBegin(GL_TRIANGLES);
 	// front face
@@ -51,18 +51,19 @@ void Transparent::drawTransparent() {
 	//glTexCoord2f(0.0f, 1.0f); glVertex3f(-halfLengths.getX(), halfLengths.getY(), halfLengths.getZ());
 	glEnd();
 	
-	/*GLfloat mat_white2[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat mat_white2[] = { 1.0, 1.0, 1.0, 1.0 };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_white2);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_white2);
 	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_white2);
-	glMaterialf(GL_FRONT, GL_SHININESS, 60.0);*/
+	glMaterialf(GL_FRONT, GL_SHININESS, 60.0);
 
 	glPopMatrix();
 }
 
 void Transparent::calcCentroid() {
-	this->center = Vector3d(((triangle1.getX() + triangle2.getX() + triangle3.getX()) / 3), ((triangle1.getY() + triangle2.getY() + triangle3.getY()) / 3),
-	((triangle1.getZ() + triangle2.getZ() + triangle3.getZ()) / 3));
+	this->center = Vector3d(((triangle1.getX() + triangle2.getX() + triangle3.getX()) / 3),
+		((triangle1.getY() + triangle2.getY() + triangle3.getY()) / 3),
+		((triangle1.getZ() + triangle2.getZ() + triangle3.getZ()) / 3));
 }
 
 Vector3d Transparent::getPosition() const {

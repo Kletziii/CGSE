@@ -406,11 +406,11 @@ void handleTransparents() {
 		}
 	} sortFunc;*/
 
-	//std::sort(transparent.begin(), transparent.end(), bigger);
+	std::sort(transparent.begin(), transparent.end(), bigger);
 
 	// draw triangles
 	for (int i = 0; i < transparent.size(); i++) {
-		transparent[0].drawTransparent();
+		transparent[i].drawTransparent();
 	}
 }
 
@@ -694,17 +694,18 @@ void init(int width, int height) {
 
 	obstacles[36] = Obstacle(Vector3d(0, 1, -6), Vector3d(1, 1, 1), false, true, 1, textureLoader.get("metalcrate"));
 
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 0, 1), Vector3d(-1, 1, 1), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(0, 1, 1), Vector3d(0, 1, 0), Vector3d(0, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(0, 0, 1), Vector3d(0, 1, 1), Vector3d(0, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	/*
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-1, 1, 1), Vector3d(-1, 1, 0), Vector3d(-1, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));*/
+	//right
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 1, 1), Vector3d(-3, 1, 0), Vector3d(-3, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 0, 1), Vector3d(-3, 1, 1), Vector3d(-3, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	//left
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-2, 1, 1), Vector3d(-2, 1, 0), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-2, 0, 1), Vector3d(-2, 1, 1), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	//front
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 1, 0), Vector3d(-2, 1, 0), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 0, 0), Vector3d(-3, 1, 0), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	//back
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 1, 1), Vector3d(-2, 1, 1), Vector3d(-3, 0, 1), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 0, 1), Vector3d(-2, 1, 1), Vector3d(-2, 0, 1), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
 }
 
 void timer(int value) {
