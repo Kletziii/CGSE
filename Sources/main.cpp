@@ -22,6 +22,7 @@
 #include "../Headers/TextureLoader.h"
 #include "../Headers/CollisionBox.h"
 #include "../Headers/Transparent.h"
+#include "../Headers/glext.h"
 
 #include "../Assimp/assimp-3.1.1/include/assimp/ai_assert.h"
 
@@ -118,6 +119,14 @@ void resize(int width, int height) {
 
 void drawFloor(float posBeginX, float posBeginZ, float posEndX, float posEndZ, float factor) {
 	glBindTexture(GL_TEXTURE_2D, textureLoader.get("flagstone"));
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 5);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_LOD, -1000);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LOD, 1000);
+	//glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 256, 256, 0, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid*)textureLoader.get("flagstone"));
 
 	glPushMatrix();
 	glBegin(GL_QUADS);
