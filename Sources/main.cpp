@@ -386,7 +386,7 @@ void handleObstacles() {
 		// LOD
 		Vector3d dif = camPos - pair.second.getPosition();
 		double length = dif.length();
-		if (length < 5) {
+		if (length < 8) {
 			pair.second.drawObstacle2();
 		}
 		else {
@@ -566,6 +566,21 @@ void display() {
 	glutSwapBuffers();
 }
 
+void createCube(int posX) {
+	//right
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3 + posX, 1, 1), Vector3d(-3 + posX, 1, 0), Vector3d(-3 + posX, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3 + posX, 0, 1), Vector3d(-3 + posX, 1, 1), Vector3d(-3 + posX, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	//left
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-2 + posX, 1, 1), Vector3d(-2 + posX, 1, 0), Vector3d(-2 + posX, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-2 + posX, 0, 1), Vector3d(-2 + posX, 1, 1), Vector3d(-2 + posX, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	//front
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3 + posX, 1, 0), Vector3d(-2 + posX, 1, 0), Vector3d(-2 + posX, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3 + posX, 0, 0), Vector3d(-3 + posX, 1, 0), Vector3d(-2 + posX, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	//back
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3 + posX, 1, 1), Vector3d(-2 + posX, 1, 1), Vector3d(-3 + posX, 0, 1), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3 + posX, 0, 1), Vector3d(-2 + posX, 1, 1), Vector3d(-2 + posX, 0, 1), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+}
+
 void init(int width, int height) {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClearDepth(1.0);
@@ -684,18 +699,10 @@ void init(int width, int height) {
 
 	obstacles[36] = Obstacle(Vector3d(0, 1, -6), Vector3d(1, 1, 1), false, true, 1, textureLoader.get("metalcrate"));
 
-	//right
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 1, 1), Vector3d(-3, 1, 0), Vector3d(-3, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 0, 1), Vector3d(-3, 1, 1), Vector3d(-3, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	//left
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-2, 1, 1), Vector3d(-2, 1, 0), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-2, 0, 1), Vector3d(-2, 1, 1), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	//front
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 1, 0), Vector3d(-2, 1, 0), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 0, 0), Vector3d(-3, 1, 0), Vector3d(-2, 0, 0), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	//back
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 1, 1), Vector3d(-2, 1, 1), Vector3d(-3, 0, 1), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
-	transparent.push_back(Transparent(Vector3d(1, 1, 1), Vector3d(-3, 0, 1), Vector3d(-2, 1, 1), Vector3d(-2, 0, 1), Vector3d(0.2, 0.2, 0.2), 0.2, 1, textureLoader.get("bricks")));
+	// create transparent cubes
+	createCube(0);
+	createCube(-3);
+	createCube(-6);
 }
 
 void timer(int value) {
