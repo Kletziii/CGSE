@@ -119,15 +119,7 @@ void resize(int width, int height) {
 
 void drawFloor(float posBeginX, float posBeginZ, float posEndX, float posEndZ, float factor) {
 	glBindTexture(GL_TEXTURE_2D, textureLoader.get("flagstone"));
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 5);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_LOD, -1000);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LOD, 1000);
-	//glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 256, 256, 0, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid*)textureLoader.get("flagstone"));
-
+	
 	glPushMatrix();
 	glBegin(GL_QUADS);
 	glNormal3f(0.0, 1.0, 0.0);
@@ -376,7 +368,6 @@ void handleCoins() {
 
 void handleObstacles() {
 	// remove obstacles (needs iterator)
-	// TODO Transparents here
 	Vector3d camPos = camera.getPosition();
 
 	for (auto it = obstacles.cbegin(); it != obstacles.cend();) {
@@ -392,7 +383,7 @@ void handleObstacles() {
 	for (auto& pair : obstacles) {
 
 
-
+		// LOD
 		Vector3d dif = camPos - pair.second.getPosition();
 		double length = dif.length();
 		if (length < 5) {
@@ -409,12 +400,6 @@ bool bigger(Transparent a, Transparent b) {
 }
 
 void handleTransparents() {
-	/*struct {
-		bool bigger(Transparent a, Transparent b) {
-			return abs((a.getCenter() - camera.getPosition()).length()) > abs((b.getCenter() - camera.getPosition()).length());
-		}
-	} sortFunc;*/
-
 	std::sort(transparent.begin(), transparent.end(), bigger);
 
 	// draw triangles
@@ -566,7 +551,7 @@ void display() {
 	// world
 	drawWorld();
 
-	//draw transparency
+	//draw transparent
 	handleTransparents();
 
 	// collision handling
@@ -656,10 +641,6 @@ void init(int width, int height) {
 	obstacles[31] = Obstacle(Vector3d(-6.5, 0.5, -28.5), Vector3d(0.5, 0.5, 0.5), false, false, 2, textureLoader.get("metalcrate"));
 	obstacles[32] = Obstacle(Vector3d(-6.5, 0.5, -27.5), Vector3d(0.5, 0.5, 0.5), false, false, 2, textureLoader.get("metalcrate"));
 	obstacles[33] = Obstacle(Vector3d(-6.5, 0.5, -26.5), Vector3d(0.5, 0.5, 0.5), false, false, 2, textureLoader.get("metalcrate"));
-
-	// lava lake
-	//obstacles[34] = Obstacle(Vector3d(0, 0.0001, -16), Vector3d(10, 0.0001, 2), false, true, 1, textureLoader.get("lava"));
-	//obstacles[35] = Obstacle(Vector3d(0, 0.0001, -24), Vector3d(2, 0.0001, 6), false, true, 1, textureLoader.get("lava"));
 
 	// create walls
 	//walls.push_back(Wall(-2, 2, -2, -10, 3, true, 1, textureLoader.get("bricks")));

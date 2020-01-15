@@ -78,11 +78,9 @@ void TextureLoader::loadTexture(string filename, GLuint* texture) {
 	w = info->width;
 	h = info->height;
 
-	//reportGLError("before uploading texture");
 	GLint format = (mode == 4) ? GL_RGBA : GL_RGB;
 	glTexImage2D(GL_TEXTURE_2D, 0, format, w, h, 0, format,
 		GL_UNSIGNED_BYTE, info->imageData);
-	//reportGLError("after uploading texture");
 
 	tgaDestroy(info);
 }
