@@ -76,10 +76,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.6\include;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.8-bin;D:\Dropbox\FH_Technikum\BIF4_SS2019\CGE\glut-3.7.6-bin;C:\FHTechnikum\4_Semester\CG\GLUT\glut-3.7.6-bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.17763.0\um\gl;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.6\include;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.8-bin;D:\Dropbox\FH_Technikum\BIF4_SS2019\CGE\glut-3.7.6-bin;C:\FHTechnikum\4_Semester\CG\GLUT\glut-3.7.6-bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.6\include;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.8-bin;D:\Dropbox\FH_Technikum\BIF4_SS2019\CGE\glut-3.7.6-bin;C:\FHTechnikum\4_Semester\CG\GLUT\glut-3.7.6-bin;D:\FHTechnikumWien\5_Semester\CGSE\GIT\CGSE\Assimp\assimp-3.1.1\include;D:\FHTechnikumWien\5_Semester\CGSE\GIT\CGSE\Assimp\assimp-3.1.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\FHTechnikum\4_Semester\CG\GLUT\glut-3.7.6-bin;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.6\include;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL\glut-3.7.8-bin;D:\Dropbox\FH_Technikum\BIF4_SS2019\CGE\glut-3.7.6-bin;C:\FHTechnikum\4_Semester\CG\GLUT\glut-3.7.6-bin;D:\FHTechnikumWien\5_Semester\CGSE\GIT\CGSE\Assimp\assimp-3.1.1\include;D:\FHTechnikumWien\5_Semester\CGSE\GIT\CGSE\Assimp\assimp-3.1.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -88,10 +88,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\Projekt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.17763.0\um\gl;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\Projekt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\Projekt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\FHTechnikum\4_Semester\CG\GLUT\glut-3.7.6-bin;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\GL;D:\FHTechnikumWien\4_Semester\Einführung Computergrafik\Projekt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

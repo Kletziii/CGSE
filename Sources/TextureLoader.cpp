@@ -65,9 +65,11 @@ void TextureLoader::loadTexture(string filename, GLuint* texture) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	// better results with mipmaping
 	float aniso = 0.0f;
 	glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &aniso);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, aniso);
+	// generating mipmaps
 	glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
@@ -76,11 +78,11 @@ void TextureLoader::loadTexture(string filename, GLuint* texture) {
 	w = info->width;
 	h = info->height;
 
-	reportGLError("before uploading texture");
+	//reportGLError("before uploading texture");
 	GLint format = (mode == 4) ? GL_RGBA : GL_RGB;
 	glTexImage2D(GL_TEXTURE_2D, 0, format, w, h, 0, format,
 		GL_UNSIGNED_BYTE, info->imageData);
-	reportGLError("after uploading texture");
+	//reportGLError("after uploading texture");
 
 	tgaDestroy(info);
 }

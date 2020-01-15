@@ -658,8 +658,8 @@ void init(int width, int height) {
 	obstacles[33] = Obstacle(Vector3d(-6.5, 0.5, -26.5), Vector3d(0.5, 0.5, 0.5), false, false, 2, textureLoader.get("metalcrate"));
 
 	// lava lake
-	obstacles[34] = Obstacle(Vector3d(0, 0.0001, -16), Vector3d(10, 0.0001, 2), false, true, 1, textureLoader.get("lava"));
-	obstacles[35] = Obstacle(Vector3d(0, 0.0001, -24), Vector3d(2, 0.0001, 6), false, true, 1, textureLoader.get("lava"));
+	//obstacles[34] = Obstacle(Vector3d(0, 0.0001, -16), Vector3d(10, 0.0001, 2), false, true, 1, textureLoader.get("lava"));
+	//obstacles[35] = Obstacle(Vector3d(0, 0.0001, -24), Vector3d(2, 0.0001, 6), false, true, 1, textureLoader.get("lava"));
 
 	// create walls
 	//walls.push_back(Wall(-2, 2, -2, -10, 3, true, 1, textureLoader.get("bricks")));
